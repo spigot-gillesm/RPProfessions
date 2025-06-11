@@ -1,0 +1,10 @@
+name: ${project.name}
+version: ${project.version}
+main: ${main-class}
+api-version: 1.17
+softdepend:
+- MMOItems
+- MythicMobs
+- ItemsAdder
+- Oraxen
+- PlaceholderAPI

@@ -8,6 +8,8 @@ import com.gilles_m.rp_professions.loader.*;
 import com.gilles_m.rp_professions.manager.DependencyManager;
 import com.gilles_m.rp_professions.manager.PlayerEffectManager;
 import com.gilles_m.rp_professions.object.StringHolder;
+import com.gilles_m.rp_professions.version.ServerVersion;
+import com.gilles_m.rp_professions.version.VersionWrapper;
 import com.github.spigot_gillesm.command_lib.CommandLib;
 import com.github.spigot_gillesm.file_utils.FileUtils;
 import com.github.spigot_gillesm.format_lib.Formatter;
@@ -27,6 +29,8 @@ public class RPProfessions extends JavaPlugin {
 
 	@Getter
 	private static RPProfessions instance;
+
+	private ServerVersion serverVersion;
 
 	@Getter
 	private boolean isPaper = false;
@@ -79,6 +83,8 @@ public class RPProfessions extends JavaPlugin {
 	}
 
 	public void loadObjects() {
+		this.serverVersion = new ServerVersion();
+
 		try {
 			StringHolderLoader.getInstance().load();
 		} catch (final IOException exception) {
@@ -109,6 +115,10 @@ public class RPProfessions extends JavaPlugin {
 		for(final Player player : Bukkit.getServer().getOnlinePlayers()) {
 			PlayerEffectManager.getInstance().clearEffectsOnQuit(player);
 		}
+	}
+
+	public VersionWrapper getVersionWrapper() {
+		return serverVersion.getVersionWrapper();
 	}
 
 	public static RPProfessionsAPI getAPI() {

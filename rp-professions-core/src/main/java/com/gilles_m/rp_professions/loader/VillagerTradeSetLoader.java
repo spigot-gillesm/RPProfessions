@@ -2,6 +2,7 @@ package com.gilles_m.rp_professions.loader;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.gilles_m.rp_professions.PluginUtils;
+import com.gilles_m.rp_professions.RPProfessions;
 import com.gilles_m.rp_professions.dto.VillagerTradeSetDTO;
 import com.gilles_m.rp_professions.dto.randomized_object.VillagerTradeDTO;
 import com.gilles_m.rp_professions.manager.VillagerTradeSetManager;
@@ -32,6 +33,7 @@ public class VillagerTradeSetLoader extends ObjectLoader<VillagerTradeSet> {
 		super(VillagerTradeSetManager.getInstance(), FILE_PATH, "villager trade set.s");
 
 		setLoaderIterable(new LoaderIterable<VillagerTradeSet, Map<String, Object>>() {
+
 			@Override
 			@SuppressWarnings("unchecked")
 			protected Map<String, Map<String, Object>> initMap() throws IOException {
@@ -77,10 +79,11 @@ public class VillagerTradeSetLoader extends ObjectLoader<VillagerTradeSet> {
 				//Set the missing data
 				villagerTradeSet.setId(worldName + "." + villagerProfession);
 				villagerTradeSet.setWorld(worldName);
-				villagerTradeSet.setProfession(Villager.Profession.valueOf(villagerProfession.toUpperCase()));
+				villagerTradeSet.setProfession(RPProfessions.getInstance().getVersionWrapper().getVillagerProfession(villagerProfession));
 
 				return villagerTradeSet;
 			}
+
 		});
 	}
 

@@ -59,18 +59,6 @@ public class PlayerListener implements Listener {
 	}
 
 	@EventHandler
-	protected void onSimpleMenuInteract(SimpleMenuInteractEvent event) {
-		if(event.getClickedItem() == null) {
-			return;
-		}
-		final ItemStack item = event.getClickedItem();
-
-		if(item.hasItemMeta() && item.getItemMeta().hasLocalizedName() && item.getItemMeta().getLocalizedName().contains("CANCEL_MENU")) {
-			event.setCancelled(true);
-		}
-	}
-
-	@EventHandler
 	protected void onPlayerClickEvent(InventoryClickEvent event) {
 		final Inventory inventory = event.getClickedInventory();
 

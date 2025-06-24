@@ -16,3 +16,9 @@ Should you have issues, bugs or need help with the plugin please head to the [Is
 ## Java Version
 
 This resource has been built on Java 19.
+
+## License
+
+This project is licensed under the **Creative Commons Attribution-NonCommercial 4.0 International**
+
+You can read more about it in the LICENSE file.

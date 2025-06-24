@@ -5,7 +5,6 @@ import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
-import org.bukkit.entity.Villager;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.BrewerInventory;
 import org.bukkit.inventory.ItemStack;
@@ -150,13 +149,7 @@ public class PluginUtils {
 	}
 
 	public boolean isVillagerProfession(@NotNull String villagerProfession) {
-		try {
-			Villager.Profession.valueOf(villagerProfession.toUpperCase());
-
-			return true;
-		} catch (final IllegalArgumentException exception) {
-			return false;
-		}
+		return RPProfessions.getInstance().getVersionWrapper().isVillagerProfession(villagerProfession);
 	}
 
 }
